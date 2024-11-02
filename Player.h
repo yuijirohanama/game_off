@@ -16,7 +16,7 @@ public:
     Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed);
     struct State
     {
-        char name[20];
+        char name[15];
         sf::Vector2f Hitbox_size;
         sf::Vector2f Hitbox_pos;
         int damage;

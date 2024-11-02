@@ -1,10 +1,10 @@
 #include "Collider.h"
 #include <iostream>
 
-Collider::Collider(sf::RectangleShape& body) :
+Collider::Collider(sf::RectangleShape& body, float Subtractdepth) :
     body(body)
 {
-    
+this->depth = Subtractdepth;
 }
 
 bool Collider::checkCollision(Collider& other, float pushDistance)

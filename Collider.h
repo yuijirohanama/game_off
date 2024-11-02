@@ -5,8 +5,9 @@ class Collider
 {
 private:
     sf::RectangleShape& body;
+    float depth;
 public:
-    Collider(sf::RectangleShape& body);
+    Collider(sf::RectangleShape& body, float Subtractdepth);
     ~Collider();
 
     void Move(float dx, float dy) {body.move(dx, dy);}
@@ -14,6 +15,6 @@ public:
 
     bool checkCollision(Collider& other, float pushDistance);
     sf::Vector2f getPosition();
-    sf::Vector2f getHalfSize() {return body.getSize() / 2.0f; }
+    sf::Vector2f getHalfSize() {return (body.getSize()-sf::Vector2f(0.0f, depth)) / 2.0f; }
 };
 

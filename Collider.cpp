@@ -5,6 +5,7 @@ Collider::Collider(sf::RectangleShape& body, float Subtractdepth) :
     body(body)
 {
 this->depth = Subtractdepth;
+//this->body.setPosition(body.getPosition()-sf::Vector2f(0.0f, depth));
 }
 
 bool Collider::checkCollision(Collider& other, float pushDistance)
@@ -61,7 +62,7 @@ bool Collider::checkCollision(Collider& other, float pushDistance)
 
 sf::Vector2f Collider::getPosition() 
     {
-        return body.getPosition();
+        return body.getPosition()+sf::Vector2f(0.0f, depth/2);
     }
 
 

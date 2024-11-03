@@ -29,4 +29,4 @@ public:
     Collider GetCollider() {return Collider(body, 80.0f); }
 };
 
-
+//player is 21 pixels high make doors 25 px or something

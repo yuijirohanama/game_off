@@ -26,7 +26,7 @@ public:
     void Update(float deltaTime);
     void Draw(sf::RenderWindow& window);
     sf::Vector2f GetPosition() {return body.getPosition(); }
-    Collider GetCollider() {return Collider(body); }
+    Collider GetCollider() {return Collider(body, 90.0f); }
 };
 
 

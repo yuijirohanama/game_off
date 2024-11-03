@@ -4,9 +4,9 @@
 class Door
 {
 private:
-    
+	sf::RectangleShape& body;
 
 public:
-	Door();
+	Door(sf::RectangleShape& body, sf::Vector2f position, bool locked);
 	~Door() = default;
 };

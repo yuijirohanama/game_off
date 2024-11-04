@@ -7,7 +7,19 @@ class Door
 private:
 Animation animation;
 
+
+
 public:
-	Door(sf::Texture* texture, sf::Vector2f position, bool locked, float switchTime);
-	~Door() = default;
+enum Direction
+{
+up,
+down,
+left,
+right,
 };
+	Door(sf::Texture* texture, sf::Vector2f position, bool locked, float switchTime, Direction direction);
+	~Door() = default;
+private:
+Direction direction;
+};
+

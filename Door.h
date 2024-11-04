@@ -1,12 +1,13 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "Animation.h"
 
 class Door
 {
 private:
-	sf::RectangleShape& body;
+Animation animation;
 
 public:
-	Door(sf::RectangleShape& body, sf::Vector2f position, bool locked);
+	Door(sf::Texture* texture, sf::Vector2f position, bool locked, float switchTime);
 	~Door() = default;
 };

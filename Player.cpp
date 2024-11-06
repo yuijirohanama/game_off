@@ -1,6 +1,7 @@
 #include "Player.h"
 #include <iostream>
 
+
 Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed) :
     animation(texture, imageCount, switchTime)
 {
@@ -52,7 +53,12 @@ void Player::Update(float deltaTime)
             faceRight = false;
         
         
-    }   
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::F))
+    {
+        OpenDoors();
+    }
+       
     animation.Update(row, deltaTime, emptyImages,faceRight);
     body.setTextureRect(animation.UVrect);
     body.move(movement); 
@@ -65,4 +71,10 @@ void Player::Draw(sf::RenderWindow& window)
 {
     window.draw(body);
 
+}
+
+void Player::OpenDoors() {
+     for (size_t i = 0; i < doors->size(); ++i) {
+        doors->at(i).Open(); // Calling the 'display' method of each object
+    }
 }

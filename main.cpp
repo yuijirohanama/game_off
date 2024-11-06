@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Platform.h"
 #include "Projectile.h"
+#include "Door.h"
 
 
 static const float VIEW_HEIGHT = 512.0f;
@@ -29,7 +30,13 @@ int main()
     healthBar.loadFromFile("../healthbar.png");
 	sf::Texture bulletTexture;
 	bulletTexture.loadFromFile("../bullet.jpg");
+	sf::Texture doorTexture;
+	doorTexture.loadFromFile("../door_cel-sheet.png");
+	std::vector<Door> doors;
+	doors.emplace_back(&doorTexture, sf::Vector2f(300,100), false, 0.08f, Door::down);
+	//doors.emplace_back(&doorTexture, sf::Vector2f(300,200), false, 0.08f, Door::left);
 	Player player(&playerTexture, sf::Vector2u(13,8), 0.08f, 100.0f);
+	player.AddDoors(&doors);
 	sf::RectangleShape map(sf::Vector2f(17408.0f, 5632.0f));
 	map.setTexture(&mapTexture);
 	Platform platform1(nullptr, sf::Vector2f(40.0f, 20.0f), sf::Vector2f(700.0f, 300.0f));
@@ -57,6 +64,11 @@ int main()
 			}
 	player.Update(deltaTime);
 	Collider col = player.GetCollider();
+	for (size_t i = 0; i < doors.size(); i++)
+	{
+		doors[i].Update(deltaTime);
+	}
+	
 	platform1.GetCollider().checkCollision(col, 1.0f);
 	platform2.GetCollider().checkCollision(col, 0.0f);
 	view.setCenter(player.GetPosition());
@@ -66,6 +78,10 @@ int main()
 	player.Draw(window);
 	platform1.Draw(window);
 	platform2.Draw(window);
+	for (size_t i = 0; i < doors.size(); i++)
+	{
+		doors[i].Draw(window);
+	}
 	MouseSprite.setOrigin(500,500);
     MouseSprite.setPosition(((static_cast<sf::Vector2f>(sf::Mouse::getPosition(window))) + player.GetPosition()) - sf::Vector2f((window.getSize().x) /2, (window.getSize().y) /2));
     MouseSprite.setScale(sf::Vector2f(0.05f,0.05f));	

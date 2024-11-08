@@ -8,22 +8,26 @@ body.setSize(sf::Vector2f(100.0f, 234.0f));
 body.setOrigin(body.getSize() / 2.0f);
 body.setPosition(position);
 body.setTexture(texture);
-if (direction == up)
+i = 5;
+
+if (direction == 0)
 {
     row = 0;
 }
-else if (direction == down)
+if (direction == 1)
 {
     row = 1;
+    std::cout<<direction<<std::endl;
 }
-else if (direction == right)
+if (direction == 3)
 {
     row = 2;
 }
-else
+else if(direction == 2)
 {
     row = 3;
 }
+
 body.setTextureRect(animation.UVrect);
 }
 
@@ -32,13 +36,26 @@ void Door::Open() {
 }
 
 void Door::Update(float deltaTime) {
+static bool isFirstTime = true;
 
-if (int i = 0; open == true && i <5)
+// Inside the function
+if (isFirstTime) {
+  animation.Update(row, deltaTime, 5,true);
+  body.setTextureRect(animation.UVrect);
+  isFirstTime = false;
+}
+if (open == true && animation.GetColumn()<i)
 {
 animation.Update(row, deltaTime, 0,true);
 body.setTextureRect(animation.UVrect);
-i++;
+std::cout<<animation.GetColumn()<<std::endl;
+
+
 }
+
+
+
+
 
 }
 

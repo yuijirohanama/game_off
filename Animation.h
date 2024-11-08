@@ -15,7 +15,7 @@ public:
 public:
     Animation(sf::Texture* texture, sf::Vector2u imageCount, float switchTime);
     ~Animation();
-
+    unsigned int GetColumn() {return currentImage.x;}
     void Update(int row, float deltaTime, int emptyImages, bool faceRight);
 };
 

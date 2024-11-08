@@ -33,7 +33,7 @@ int main()
 	sf::Texture doorTexture;
 	doorTexture.loadFromFile("../door_cel-sheet.png");
 	std::vector<Door> doors;
-	doors.emplace_back(&doorTexture, sf::Vector2f(300,100), false, 0.08f, Door::down);
+	doors.emplace_back(&doorTexture, sf::Vector2f(300,100), false, 0.08f, Door::left);
 	//doors.emplace_back(&doorTexture, sf::Vector2f(300,200), false, 0.08f, Door::left);
 	Player player(&playerTexture, sf::Vector2u(13,8), 0.08f, 100.0f);
 	player.AddDoors(&doors);

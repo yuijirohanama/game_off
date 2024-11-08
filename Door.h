@@ -11,7 +11,8 @@ private:
 Animation animation;
 bool open;
 sf::RectangleShape body;
-unsigned int row;
+int row;
+unsigned int i;
 
 
 public:
